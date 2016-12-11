@@ -17,7 +17,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
+import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -111,6 +111,51 @@ pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 # modindex_common_prefix = []
+
+# Epilogue for all files
+rst_epilog = """
+.. |extlink| image:: /_static/extlink.svg
+
+.. |None| replace:: :obj:`None`
+
+.. |True| replace:: :obj:`True`
+
+.. |False| replace:: :obj:`False`
+
+.. |int| replace:: :obj:`int`
+
+.. |float| replace:: :obj:`float`
+
+.. |list| replace:: :obj:`list`
+
+.. |tuple| replace:: :obj:`tuple`
+
+.. |type| replace:: :obj:`type`
+
+.. |str| replace:: :obj:`str`
+
+.. |unicode| replace:: :obj:`unicode`
+
+.. |bool| replace:: :obj:`bool`
+
+.. |dict| replace:: :obj:`dict`
+
+.. |callable| replace:: :func:`callable`
+
+.. |re.compile| replace:: :func:`re.compile`
+
+.. |npfloat_| replace:: :mod:`np.float_ <numpy.doc.basics>`
+
+.. |npfloat| replace:: ``np.float``
+
+.. |nparray| replace:: :obj:`np.array <numpy.ndarray>`
+
+.. |br| raw:: html
+
+    <br />
+
+"""
+
 
 # If true, keep warnings as "system message" paragraphs in the built documents.
 # keep_warnings = False
@@ -428,5 +473,18 @@ epub_exclude_files = ['search.html']
 # epub_use_index = True
 
 
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+# Configuration for intersphinx. Heavily customized.
+isphx_local = os.environ.get('ISPHX_LOCAL')
+isphx_objpath = os.path.join('isphx','{0}')
+isphx_objstr = 'objects_{0}.inv'
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3.5',
+               (isphx_objpath.format(isphx_objstr.format('python'))
+                if isphx_local else None)),
+    'numpy': ('https://docs.scipy.org/doc/numpy/',
+              (isphx_objpath.format(isphx_objstr.format('numpy'))
+               if isphx_local else None)),
+    'h5py': ('http://docs.h5py.org/en/latest/',
+             (isphx_objpath.format(isphx_objstr.format('h5py'))
+              if isphx_local else None))
+    }

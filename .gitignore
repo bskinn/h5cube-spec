@@ -1,3 +1,9 @@
 # Sphinx documentation
 doc/build/
 
+# NoteTab backup files
+*.bak
+
+# Sphinx inventory files
+doc/source/isphx/*.inv
+
