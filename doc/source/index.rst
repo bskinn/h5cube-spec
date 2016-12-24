@@ -15,13 +15,19 @@ greater compression by other means.
 
 It is the purpose of this document to define a file specification for storing
 the data contained in Gaussian CUBE files in the binary
-`HDF5 <https://support.hdfgroup.org/HDF5/>`__ |extlink| format. [More specifically, this
-specification aims to facilitate storing such data in a fashion that
-is amenable to the enhanced compression methods available in the HDF5 format
-(see `here <https://support.hdfgroup.org/hdf5-quest.html#gcomp>`__ |extlink|, especially
-in circumstances where 'semi-lossy'
-compression is acceptable. (eventually link to h5cube docs & the high comp factors
-achievable with truncation and thresholding)]
+`HDF5 <https://support.hdfgroup.org/HDF5/>`__ |extlink| format. In particular, this
+specification aims to facilitate storing such CUBE data in a fashion able to exploit
+the enhanced compression methods available in the HDF5 format
+(see `here <https://support.hdfgroup.org/hdf5-quest.html#gcomp>`__ |extlink|).
+In circumstances where 'semi-lossy' compression (e.g., truncation of precision) is
+acceptable, particularly large compression ratios are feasible.
+Documentation at the companion Python project ``h5cube``
+(`ReadTheDocs <http://h5cube.readthedocs.io/en/stable/>`__ |extlink|\|
+`GitHub <https://github.com/bskinn/h5cube>`__ |extlink|) will eventually illustrate
+representative compression factors achievable in the ``.h5cube`` file format; preliminary data
+can be found at this
+`Google Spreadsheet <https://docs.google.com/spreadsheets/d/1AajEYpacgq48X72_HuarVLVA517ZY4htaEWf1tLY5Cc/edit#gid=0>`__
+|extlink|.
 
 [Facilitate interoperable read/write of CUBE data to this binary format.]
 
