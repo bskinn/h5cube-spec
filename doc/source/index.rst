@@ -15,12 +15,14 @@ greater compression by other means.
 
 It is the purpose of this document to define a file specification for storing
 the data contained in Gaussian CUBE files in the binary
-`HDF5 <https://support.hdfgroup.org/HDF5/>`__ |extlink| format. In particular, this
-specification aims to facilitate storing such CUBE data in a fashion able to exploit
-the enhanced compression methods available in the HDF5 format
+`HDF5 <https://support.hdfgroup.org/HDF5/>`__ |extlink| format. HDF5
+was chosen due to its acceptance across numerous disciplines as a standardized,
+cross-platform data storage format, and for the free, cross-platform compression
+algorithms integrated into it
 (see `here <https://support.hdfgroup.org/hdf5-quest.html#gcomp>`__ |extlink|).
-In circumstances where 'semi-lossy' compression (e.g., truncation of precision) is
-acceptable, particularly large compression ratios are feasible.
+In circumstances where 'semi-lossy' compression (e.g., truncation of precision
+and/or data thresholding) is
+acceptable, particularly large reductions in file size are feasible.
 Documentation at the companion Python project ``h5cube``
 (`ReadTheDocs <http://h5cube.readthedocs.io/en/stable/>`__ |extlink|\|
 `GitHub <https://github.com/bskinn/h5cube>`__ |extlink|) will eventually illustrate
@@ -29,13 +31,16 @@ can be found at this
 `Google Spreadsheet <https://docs.google.com/spreadsheets/d/1AajEYpacgq48X72_HuarVLVA517ZY4htaEWf1tLY5Cc/edit#gid=0>`__
 |extlink|.
 
-[Facilitate interoperable read/write of CUBE data to this binary format.]
+Definition of an explicit specification for the ``.h5cube`` format is anticipated to facilitate
+direct, cross-platform binary read and write of CUBE data.  Particular advantages should be
+observed by applications aware of the HDF5 format and of this specification when reading data,
+gained from rapid retrieval of individual data points or subsets directly from ``.h5cube``
+files without the need to load the full dataset.  Even in instances where the full dataset
+must be loaded into memory, the disk usage will still be minimal in most cases, since it
+should be unnecessary to recreate an intermediate uncompressed CUBE file.
 
-[Particular potential advantage is enabling read of individual points or data subsets by software aware of the
-specification, streamlining use of the data if the full dataset is not needed]
-
-[Mention CUBE file format is laid out here, and that the various version(s) of the specification
-refer back to that format as laid out here using the particular syntax defined there.]
+The Gaussian CUBE file format is also delineated here, using a "field"-style syntax for
+convenient cross-reference from the various version(s) of the ``.h5cube`` specification.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and

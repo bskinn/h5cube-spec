@@ -5,13 +5,13 @@ Gaussian CUBE File Format
 
 The CUBE file format is delineated on the Gaussian webpage as part of the
 description of the ``cubegen`` utility [Gau14]_. As noted there, **all data**
-in CUBE files is to be stored in atomic units (electrons and Bohrs, and units derived
+in CUBE files MUST be stored in atomic units (electrons and Bohrs, and units derived
 from these).
 
 The format specification on the webpage of the VMD visualization program [UIUC16]_
 provides a cleaner layout of one possible arrangement of the needed contents. In particular,
 the Gaussian specification is ambiguous about whitespace requirements, so parsing of CUBE
-files has to accommodate the possibility of variability in the exact format of
+files SHOULD accommodate the possibility of variability in the exact format of
 any given CUBE file, including (i) variable amounts/types of whitespace between the values on
 a given line, and (ii) the presence of leading and/or trailing whitespace on a given line.
 
@@ -43,19 +43,27 @@ All fields except for
 
 **{COMMENT1 (str)}** and **{COMMENT2 (str)}**
 
-Two lines of text at the head of the file. Per VMD [UIUC16]_, by convention these are
-typically (1) the title of the system and (2) a description of the property/content stored
-in the file.
+    Two lines of text at the head of the file. Per VMD [UIUC16]_, by convention these are
+    typically (1) the title of the system and (2) a description of the property/content stored
+    in the file, but they MAY be anything.
 
 **{NATOMS (int)}**
 
-This first field on the third line indicates the number of atoms present in the system.
-A negative value here indicates the CUBE file MUST contain the ``{DSET_IDS}`` line(s); a
-positive value indicates the file MUST NOT contain this/these lines.
+    This first field on the third line indicates the number of atoms present in the system.
+    A negative value here indicates the CUBE file MUST contain the ``{DSET_IDS}`` line(s); a
+    positive value indicates the file MUST NOT contain this/these lines.
 
-The absolute value of ``{NATOMS}`` defines the number of rows of molecular geometry data
-that MUST be present in ``{GEOM}``.
+    The absolute value of ``{NATOMS}`` defines the number of rows of molecular geometry data
+    that MUST be present in ``{GEOM}``.
 
 **{ORIGIN (3x float)}**
 
-[...]
+    This set of three fields defines the displacement vector from the geometric origin of
+    the system, :math:`\left(0,0,0\right)`, to the reference point
+    :math:`\left(x_0, y_0, z_0\right)` for the spanning vectors defined in
+    ``{XAXIS}``, ``{YAXIS}``, and ``{ZAXIS}``.
+
+**{XAXIS (int) (3x float)}**
+
+    [...]
+
