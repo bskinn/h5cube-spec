@@ -51,6 +51,7 @@ Contents:
 
 .. toctree::
     :maxdepth: 2
+    :titlesonly:
 
     cubeformat
     h5cube Specifications <specs>
