@@ -36,8 +36,8 @@ direct, cross-platform binary read and write of CUBE data.  Particular advantage
 observed by applications aware of the HDF5 format and of this specification when reading data,
 gained from rapid retrieval of individual data points or subsets directly from ``.h5cube``
 files without the need to load the full dataset.  Even in instances where the full dataset
-must be loaded into memory, the disk usage will still be minimal in most cases, since it
-should be unnecessary to recreate an intermediate uncompressed CUBE file.
+must be loaded into memory, the disk usage will still be significantly reduced in most cases,
+since it should be unnecessary to recreate an intermediate uncompressed CUBE file.
 
 The Gaussian CUBE file format is also delineated here, using a "field"-style syntax for
 convenient cross-reference from the various version(s) of the ``.h5cube`` specification.
