@@ -35,7 +35,6 @@ All fields except for
 ``{NVAL}`` may be omitted if its value would be equal to one; it MUST be absent or
 have a value of one if ``{NATOMS}`` is negative.
 
-
 Field Layout
 ------------
 
@@ -93,6 +92,9 @@ Field Descriptions
 
     The absolute value of ``{NATOMS}`` defines the number of rows of molecular geometry data
     that MUST be present in ``{GEOM}``.
+
+    The CUBE specification is silent as to whether a zero value is permitted for ``{NATOMS}``;
+    most applications likely **do not** support CUBE files with no atoms.
 
 .. _cubeformat-ORIGIN:
 
@@ -167,13 +169,13 @@ Field Descriptions
     Each row of this field provides atom identity and position information for an
     atom in the molecular system of the CUBE file:
 
-     * ``(int)`` - Atomic number of atom :math:`i`
+     * ``(int)`` - Atomic number of atom :math:`a`
 
-     * ``(float)`` - Nuclear charge of atom :math:`i` (will deviate from the atomic
+     * ``(float)`` - Nuclear charge of atom :math:`a` (will deviate from the atomic
        number when an ECP is used)
 
      * ``(3x float)`` - Position of the atom in the geometric frame of
-       reference :math:`\left(x_i, y_i, z_i\right)`
+       reference :math:`\left(x_a, y_a, z_a\right)`
 
 .. _cubeformat-DSET_IDS:
 
@@ -181,8 +183,8 @@ Field Descriptions
 
     *This field is only present if* ``{NATOMS}`` *is negative*
 
-    This field comprises one or more rows of integers, with a total of :math:`j+1`
-    values present. The first value MUST be equal to :math:`j`, to indicate the
+    This field comprises one or more rows of integers, with a total of :math:`m+1`
+    values present. The first value MUST be equal to :math:`m`, to indicate the
     length of the list; each remaining value may be any integer. There SHOULD NOT
     be any repeated integers between the second and final elements of the list,
     inclusive.
@@ -192,18 +194,38 @@ Field Descriptions
 **{DATA (#x scinot)}**
 
     This field encompasses the remainder of the CUBE file.  Typical formatted CUBE output
-    has up to six values on each line, in scientific notation.
+    has up to six values on each line, in whitespace-separated scientific notation.
 
     If ``{NATOMS}`` is positive, a total of :math:`N_X N_Y N_Z*` ``{NVAL}`` values should
-    be present, flattened in the following nested sequence::
+    be present, flattened as follows (in the below Python pseudocode the for-loop
+    variables are iterated starting from zero)::
 
-        for i in NX:
-            for j in NY:
-                for k in NZ:
-                    for l in {NVAL}:
+        for i in range(NX):
+            for j in range(NY):
+                for k in range(NZ):
+                    for l in range({NVAL}):
 
                         write({DATA}[i, j, k, l])
+                        if (k*{NVAL} + l) mod 6 == 5:
+                            write('\n')
 
+                write('\n')
 
+    If ``{NATOMS}`` is negative and :math:`m` datasets are present (see
+    :ref:`{DSET_IDS} <cubeformat-DSET_IDS>` above), a total of
+    :math:`N_X N_Y N_Z m` values should be present, flattened as follows::
 
-    Regardless of the value of ``{NATOMS}``, a newline is typically inserted after each [...]
+        for i in range(NX):
+            for j in range(NY):
+                for k in range(NZ):
+                    for l in range(m):
+
+                        write({DATA}[i, j, k, l])
+                        if (k*{NVAL} + l) mod 6 == 5:
+                            write('\n')
+
+                write('\n')
+
+    Regardless of the value of ``{NATOMS}``, as illustrated above a newline is typically
+    inserted after the block of data corresponding to each :math:`\left(X_i, Y_j\right)`
+    pair is written.
