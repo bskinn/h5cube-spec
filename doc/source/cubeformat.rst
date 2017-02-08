@@ -3,11 +3,20 @@
 Gaussian CUBE File Format
 =========================
 
+Disclaimer
+----------
+
+The CUBE file format as described here is **NOT** an official specification, sanctioned
+by Gaussian, Inc. It is instead this author's best effort to provide a complete
+description of the contents of the majority of CUBE files in circulation, as represented
+by the small subset encountered by this author. **FILES FORMATTED TO THIS SPECIFICATION
+MAY NOT BE COMPATIBLE WITH ALL SOFTWARE SUPPORTING CUBE FILE INPUT.**
+
 Overview
 --------
 
-The CUBE file format is delineated on the Gaussian webpage as part of the
-description of the ``cubegen`` utility [Gau14]_. As noted there, **all data**
+The CUBE file format is described on the Gaussian webpage as part of the
+documentation of the ``cubegen`` utility [Gau14]_. As noted there, **all data**
 in CUBE files MUST be stored in atomic units (electrons and Bohrs, and units derived
 from these).
 
