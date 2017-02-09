@@ -16,7 +16,7 @@ Overview
 --------
 
 The CUBE file format is described on the Gaussian webpage as part of the
-documentation of the ``cubegen`` utility [Gau14]_. As noted there, **all data**
+documentation of the ``cubegen`` utility [Gau16]_. As noted there, **all data**
 in CUBE files MUST be stored in atomic units (electrons and Bohrs, and units derived
 from these).
 
@@ -131,7 +131,7 @@ Field Descriptions
     The first field on this line is an integer indicating the number of voxels
     :math:`N_X` present
     along the :math:`X`-axis of the volumetric region represented by the CUBE file. This
-    value SHOULD always be positive; whereas the *input* to the ``cubegen`` [Gau14]_
+    value SHOULD always be positive; whereas the *input* to the ``cubegen`` [Gau16]_
     utility allows a negative value here as a flag for the units of the axis dimensions,
     in a CUBE file distance units MUST **always** be in Bohrs, and thus the 'units flag'
     function of a negative sign is superfluous.
@@ -139,7 +139,7 @@ Field Descriptions
     The second through fourth values on this line are the components of the vector
     :math:`\vec X`
     defining the voxel :math:`X`-axis.  They SHOULD all be positive. As noted in the
-    Gaussian documentation [Gau14]_, the voxel axes need not be orthogonal
+    Gaussian documentation [Gau16]_, the voxel axes need not be orthogonal
     nor aligned with the geometry axes. However, many tools only support
     voxel axes that are aligned with the geometry axes.  In this case, the first
     ``float`` value :math:`\left(X_x\right)` will be positive and the other two
@@ -238,3 +238,4 @@ Field Descriptions
     Regardless of the value of ``{NATOMS}``, as illustrated above a newline is typically
     inserted after the block of data corresponding to each :math:`\left(X_i, Y_j\right)`
     pair is written.
+

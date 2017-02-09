@@ -338,7 +338,7 @@ latex_documents = [
 #
 # latex_appendices = []
 
-# It false, will not define \strong, \code, 	itleref, \crossref ... but only
+# It false, will not define \strong, \code,     itleref, \crossref ... but only
 # \sphinxstrong, ..., \sphinxtitleref, ... To help avoid clash with user added
 # packages.
 #
@@ -491,3 +491,4 @@ intersphinx_mapping = {
              (isphx_objpath.format(isphx_objstr.format('h5py'))
               if isphx_local else None))
     }
+
