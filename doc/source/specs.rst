@@ -9,7 +9,7 @@ spirit of
 `Semantic Versioning <http://semver.org>`__:
 :math:`\newcommand{mtt}[1]{\texttt{#1}}`
 
- * Specification version numbers will be of the form v\ :math:`\mtt{x.y.z}`,
+ * Specification version numbers will be of the form :math:`\mtt{vx.y.z}`,
    where :math:`\mtt x`, :math:`\mtt{y}`, and :math:`\mtt{z}` indicate
    `major`, `minor`, and `patch` categories of changes. If :math:`\mtt z`
    is not present, it implicitly holds a value of zero.
@@ -23,12 +23,12 @@ spirit of
    fields/content are unchanged.
 
  * An increment in the `major` version level indicates that existing
-   field(s)/content has been removed/changed. New field(s)/content may also
+   field(s)/content have been removed/changed. New field(s)/content may also
    have been added.
 
 Based upon the above, it is expected that applications built against the
-specific version v\ :math:`\mtt{X.Y.Z}` should be compatible with the
-following versions v\ :math:`\mtt{x.y.z}`:
+specific version :math:`\mtt{vX.Y.Z}` should be compatible with the
+following versions :math:`\mtt{vx.y.z}`:
 
  * :math:`\mtt x = \mtt X`, :math:`\mtt y = \mtt Y`,
    :math:`\mtt z \geq \mtt Z`

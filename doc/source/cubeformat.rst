@@ -7,9 +7,9 @@ Disclaimer
 ----------
 
 The CUBE file format as described here is **NOT** an official specification, sanctioned
-by Gaussian, Inc. It is instead this author's best effort to provide a complete
-description of the contents of the majority of CUBE files in circulation, as represented
-by the small subset encountered by this author. **FILES FORMATTED TO THIS SPECIFICATION
+by Gaussian, Inc. It is instead a best effort to define
+the contents of a representative subset of CUBE files in circulation.
+**FILES FORMATTED TO THIS SPECIFICATION
 MAY NOT BE COMPATIBLE WITH ALL SOFTWARE SUPPORTING CUBE FILE INPUT.**
 
 Overview
@@ -21,7 +21,7 @@ in CUBE files MUST be stored in atomic units (electrons and Bohrs, and units der
 from these).
 
 The format specification on the webpage of the VMD visualization program [UIUC16]_
-provides a cleaner layout of one possible arrangement of the needed contents. In particular,
+provides a cleaner layout of one possible arrangement of CUBE file contents. In particular,
 the Gaussian specification is ambiguous about whitespace requirements, so parsing of CUBE
 files SHOULD accommodate some variation in the format, including (i) variable
 amounts/types of whitespace between the values on
@@ -29,7 +29,8 @@ a given line, and (ii) the presence of leading and/or trailing whitespace on a g
 
 The CUBE file format as laid out below uses tagged fields (``{FIELD (type)}``) to indicate
 the types of the various data elements and where they are located in the file.
-Descriptions of the fields are provided below the field layout.  Lowercase algebraic symbols
+Descriptions of the fields are provided below the
+:ref:`field layout <cubeformat-FieldLayout>`.  Lowercase algebraic symbols
 :math:`\left(x\right.`, :math:`y`, :math:`\left. z\right)` indicate coordinates in the frame
 of the molecular geometry, whereas uppercase algebraic symbols
 :math:`\left(X\right.`, :math:`Y`, :math:`\left. Z\right)` indicate coordinates in the
@@ -43,6 +44,8 @@ All fields except for
 
 ``{NVAL}`` may be omitted if its value would be equal to one; it MUST be absent or
 have a value of one if ``{NATOMS}`` is negative.
+
+.. _cubeformat-FieldLayout:
 
 Field Layout
 ------------
@@ -89,7 +92,8 @@ Field Descriptions
 
     Two lines of text at the head of the file. Per VMD [UIUC16]_, by convention ``{COMMENT1}``
     is typically the title of the system and ``{COMMENT2}`` is a description of the
-    property/content stored in the file, but they MAY be anything.
+    property/content stored in the file, but they MAY be anything. For robustness, both of
+    these fields SHOULD NOT be zero-length.
 
 .. _cubeformat-NATOMS:
 
@@ -110,7 +114,8 @@ Field Descriptions
 **{ORIGIN (3x float)}**
 
     This set of three fields defines the displacement vector from the geometric origin of
-    the system to the reference point :math:`\left(x_0, y_0, z_0\right)` for the
+    the system :math:`\left(0,0,0\right)` to the reference point
+    :math:`\left(x_0, y_0, z_0\right)` for the
     spanning vectors defined in ``{XAXIS}``, ``{YAXIS}``, and ``{ZAXIS}``.
 
 .. _cubeformat-NVAL:
