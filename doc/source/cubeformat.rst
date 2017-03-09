@@ -139,14 +139,18 @@ Field Descriptions
     value SHOULD always be positive; whereas the *input* to the ``cubegen`` [Gau16]_
     utility allows a negative value here as a flag for the units of the axis dimensions,
     in a CUBE file distance units MUST **always** be in Bohrs, and thus the 'units flag'
-    function of a negative sign is superfluous.
+    function of a negative sign is superfluous. It is prudent to design applications to
+    handle gracefully a negative value here, however.
 
     The second through fourth values on this line are the components of the vector
     :math:`\vec X`
-    defining the voxel :math:`X`-axis.  They SHOULD all be positive. As noted in the
-    Gaussian documentation [Gau16]_, the voxel axes need not be orthogonal
+    defining the voxel :math:`X`-axis.  They SHOULD all be non-negative; proper
+    loading/interpretation/calculation behavior is
+    not guaranteed if negative values are supplied. As noted in the
+    Gaussian documentation [Gau16]_, the voxel axes need neither be orthogonal
     nor aligned with the geometry axes. However, many tools only support
-    voxel axes that are aligned with the geometry axes.  In this case, the first
+    voxel axes that **are** aligned with the geometry axes (and thus are also orthogonal).
+    In this case, the first
     ``float`` value :math:`\left(X_x\right)` will be positive and the other two
     :math:`\left(X_y\right.` and :math:`\left.X_z\right)` will be identically zero.
 
@@ -155,8 +159,9 @@ Field Descriptions
 **{YAXIS (int) (3x float)}**
 
     This line defines the :math:`Y`-axis of the volumetric region of the CUBE file,
-    in nearly identical fashion as for ``{XAXIS}``.  The key differences are that the
-    first integer field :math:`N_Y` MUST always be positive, and that for voxel axes
+    in nearly identical fashion as for ``{XAXIS}``.  The key differences are: (1) the
+    first integer field :math:`N_Y` MUST always be positive; and (2) in the situation
+    where the voxel axes
     aligned with the geometry axes, the second ``float`` field
     :math:`\left(Y_y\right)` will be positive and the first and third ``float``
     fields :math:`\left(Y_x\right.` and :math:`\left.Y_z\right)` will be
@@ -167,8 +172,9 @@ Field Descriptions
 **{ZAXIS (int) (3x float)}**
 
     This line defines the :math:`Z`-axis of the volumetric region of the CUBE file,
-    in nearly identical fashion as for ``{YAXIS}``.  The key difference is that for
-    voxel axes aligned with the geometry axes, the third ``float`` field
+    in nearly identical fashion as for ``{YAXIS}``.  The key difference is that in
+    the situation where the voxel axes are aligned with the geometry axes,
+    the third ``float`` field
     :math:`\left(Z_z\right)` will be positive and the first and second ``float``
     fields :math:`\left(Z_x\right.` and :math:`\left.Z_y\right)` will be
     identically zero.
@@ -197,11 +203,16 @@ Field Descriptions
 
     *This field is only present if* ``{NATOMS}`` *is negative*
 
-    This field comprises one or more rows of integers, with a total of :math:`m+1`
-    values present. The first value MUST be equal to :math:`m`, to indicate the
-    length of the list; each remaining value may be any integer. There SHOULD NOT
-    be any repeated integers between the second and final elements of the list,
-    inclusive.
+    This field comprises one or more rows of integers, representing identifiers
+    associated with multiple ``{DATA}`` values at each voxel, with a total of
+    :math:`m+1` values present. The most common meaning of these identifiers
+    is orbital indices.  The first value MUST be equal to :math:`m`, to indicate the
+    length of the rest of the list. Each remaining value may be any integer, with
+    the constraint that there SHOULD NOT
+    be any repeated integers among the second through final elements of the list,
+    inclusive.  All values in this field SHOULD be non-negative; unpredictable
+    behavior may result in some applications if negative integers are provided,
+    especially for the first value.
 
 .. _cubeformat-DATA:
 
@@ -219,7 +230,7 @@ Field Descriptions
                 for k in range(NZ):
                     for l in range({NVAL}):
 
-                        write({DATA}[i, j, k, l])
+                        write(data_array[i, j, k, l])
                         if (k*{NVAL} + l) mod 6 == 5:
                             write('\n')
 
@@ -234,13 +245,17 @@ Field Descriptions
                 for k in range(NZ):
                     for l in range(m):
 
-                        write({DATA}[i, j, k, l])
-                        if (k*{NVAL} + l) mod 6 == 5:
+                        write(data_array[i, j, k, l])
+                        if (k*m + l) mod 6 == 5:
                             write('\n')
 
                 write('\n')
 
+    The sequence of the data values along the last (``l``) dimension of the data array
+    for each ``i, j, k`` MUST match
+    the sequence of the identifiers provided in ``{DSET_IDS}``.
+
     Regardless of the value of ``{NATOMS}``, as illustrated above a newline is typically
     inserted after the block of data corresponding to each :math:`\left(X_i, Y_j\right)`
-    pair is written.
+    pair.
 
