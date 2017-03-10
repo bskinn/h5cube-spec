@@ -1,0 +1,7 @@
+.. v1.0 h5cube specification
+
+h5cube Specification v1.0
+=========================
+
+Only scalar volumetric data
+
