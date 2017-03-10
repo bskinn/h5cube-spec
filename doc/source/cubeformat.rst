@@ -93,7 +93,8 @@ Field Descriptions
     Two lines of text at the head of the file. Per VMD [UIUC16]_, by convention ``{COMMENT1}``
     is typically the title of the system and ``{COMMENT2}`` is a description of the
     property/content stored in the file, but they MAY be anything. For robustness, both of
-    these fields SHOULD NOT be zero-length.
+    these fields SHOULD NOT be zero-length.  As well, while there is no defined maximum length
+    for either of these fields, both SHOULD NOT exceed 80 characters in length.
 
 .. _cubeformat-NATOMS:
 
@@ -206,13 +207,12 @@ Field Descriptions
     This field comprises one or more rows of integers, representing identifiers
     associated with multiple ``{DATA}`` values at each voxel, with a total of
     :math:`m+1` values present. The most common meaning of these identifiers
-    is orbital indices.  The first value MUST be equal to :math:`m`, to indicate the
-    length of the rest of the list. Each remaining value may be any integer, with
-    the constraint that there SHOULD NOT
-    be any repeated integers among the second through final elements of the list,
-    inclusive.  All values in this field SHOULD be non-negative; unpredictable
-    behavior may result in some applications if negative integers are provided,
-    especially for the first value.
+    is orbital indices, in CUBE files containing wavefunction data.
+    The first value MUST be positive and equal to :math:`m`, to indicate the
+    length of the rest of the list. Each of these :math:`m` values may be
+    any integer, with the constraint that all values SHOULD be unique.
+    Further, all :math:`m` values SHOULD be non-negative, as unpredictable
+    behavior may result in some applications if negative integers are provided.
 
 .. _cubeformat-DATA:
 
@@ -253,9 +253,10 @@ Field Descriptions
 
     The sequence of the data values along the last (``l``) dimension of the data array
     for each ``i, j, k`` MUST match
-    the sequence of the identifiers provided in ``{DSET_IDS}``.
+    the sequence of the identifiers provided in ``{DSET_IDS}`` in order for the dataset
+    to be interpreted properly.
 
-    Regardless of the value of ``{NATOMS}``, as illustrated above a newline is typically
+    Regardless of the sign of ``{NATOMS}``, as illustrated above a newline is typically
     inserted after the block of data corresponding to each :math:`\left(X_i, Y_j\right)`
     pair.
 
