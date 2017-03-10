@@ -42,7 +42,7 @@ All fields except for
 ``{DSET_IDS}`` MUST be present if
 ``{NATOMS}`` is negative; it MUST NOT be present if ``{NATOMS}`` is positive.
 
-``{NVAL}`` may be omitted if its value would be equal to one; it MUST be absent or
+``{NVAL}`` MAY be omitted if its value would be equal to one; it MUST be absent or
 have a value of one if ``{NATOMS}`` is negative.
 
 .. _cubeformat-FieldLayout:
