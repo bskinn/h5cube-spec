@@ -9,10 +9,10 @@ data.
 Work-in-progress for all content is committed on ``draft``, with final
 versions pushed to ``master`` when complete.
 
-The specification versioning effectively follows
-`Semantic Versioning <http://semver.org>`__ (major.minor.patch):
+The specification versioning follows a modified version of
+`Semantic Versioning <http://semver.org>`__ (major.minor rev#):
 
- * An increment in the `patch` version level indicates minor editorial fix(es),
+ * An increment in the revision level (``rev#``) indicates minor editorial fix(es),
    such as correcting typos or introducing clarification(s) that do not
    affect the semantic content of the specification.
 
