@@ -157,6 +157,8 @@ rst_epilog = """
 
     <br />
 
+.. |COMMENT1| replace:: :ref:`{COMMENT1} <cubeformat-COMMENTS>`
+
 """
 
 

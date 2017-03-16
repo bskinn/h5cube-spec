@@ -36,7 +36,15 @@ The HDF5 dataset names defined by these specifications are formatted in
 fixed-font, with surrounding square brackets (e.g., ``[GEOM]``).  This
 distinguishes them from the fields in the
 :doc:`CUBE file specification </cubeformat>`, which use curly braces
-(e.g., ``{GEOM}``).
+(e.g., ``{GEOM}``).  All of the dataset names are strings, and thus
+to access the ``[GEOM]`` dataset in Python, use code like the following::
+
+    >>> import h5py as h5
+    >>> hf = h5.File('file.h5cube')
+    >>> hf['GEOM'].value
+    array([ ... ])
+
+.. todo:: Syntax/formatting of the dataset descriptions.
 
 
 Specification Versions
