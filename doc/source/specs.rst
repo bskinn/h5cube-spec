@@ -44,7 +44,10 @@ to access the ``[GEOM]`` dataset in Python, use code like the following::
     >>> hf['GEOM'].value
     array([ ... ])
 
-.. todo:: Syntax/formatting of the dataset descriptions.
+.. todo:: Description of the syntax/formatting of the dataset descriptions
+          residing in the subpages here. In particular, a brief overview of
+          the HDF5 datatypes and the 'lumped' approach taken in the
+          spec layouts. (Fig. 6-4, Tbl. 6-1)
 
 
 Specification Versions

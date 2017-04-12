@@ -36,6 +36,9 @@ extensions = [
     'sphinx.ext.mathjax',
 ]
 
+# MathJax CDN going down; switch to cdnjs @ fixed version
+mathjax_path = 'https://cdn.mathjax.org/mathjax/2.7-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -158,6 +161,26 @@ rst_epilog = """
     <br />
 
 .. |COMMENT1| replace:: :ref:`{COMMENT1} <cubeformat-COMMENTS>`
+
+.. |COMMENT2| replace:: :ref:`{COMMENT2} <cubeformat-COMMENTS>`
+
+.. |NATOMS| replace:: :ref:`{NATOMS} <cubeformat-NATOMS>`
+
+.. |ORIGIN| replace:: :ref:`{ORIGIN} <cubeformat-ORIGIN>`
+
+.. |NVAL| replace:: :ref:`{NVAL} <cubeformat-NVAL>`
+
+.. |XAXIS| replace:: :ref:`{XAXIS} <cubeformat-XAXIS>`
+
+.. |YAXIS| replace:: :ref:`{YAXIS} <cubeformat-YAXIS>`
+
+.. |ZAXIS| replace:: :ref:`{ZAXIS} <cubeformat-ZAXIS>`
+
+.. |GEOM| replace:: :ref:`{GEOM} <cubeformat-GEOM>`
+
+.. |DSET_IDS| replace:: :ref:`{DSET_IDS} <cubeformat-DSET_IDS>`
+
+.. |DATA| replace:: :ref:`{DATA} <cubeformat-DATA>`
 
 """
 

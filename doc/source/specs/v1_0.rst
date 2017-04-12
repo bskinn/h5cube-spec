@@ -5,6 +5,7 @@ h5cube Specification v1.0 - Description
 
 Only scalar volumetric data... *and other commentary*
 
+.. todo:: Complete this description.
 
 .. toctree::
     :maxdepth: 1
