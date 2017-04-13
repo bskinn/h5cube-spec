@@ -160,6 +160,10 @@ rst_epilog = """
 
     <br />
 
+.. |h5cube| replace:: :math:`\\small \\textbf{h5cube}`
+
+.. |CUBE| replace:: :math:`\\small \\textbf{CUBE}`
+
 .. |COMMENT1| replace:: :ref:`{COMMENT1} <cubeformat-COMMENTS>`
 
 .. |COMMENT2| replace:: :ref:`{COMMENT2} <cubeformat-COMMENTS>`

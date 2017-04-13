@@ -3,11 +3,10 @@
 h5cube File Specifications
 ==========================
 
-This page collates all existing versions of the ``h5cube`` file specification
+This page collates all existing versions of the |h5cube| file specification
 for convenient access.  The versioning scheme used here follows the
 spirit of
 `Semantic Versioning <http://semver.org>`__ but in a revised syntax:
-:math:`\newcommand{mtt}[1]{\texttt{#1}}`
 
  * Specification version numbers will be of the form :math:`\mtt{vx.y rev#}`,
    where :math:`\mtt x` and :math:`\mtt{y}` indicate
@@ -34,8 +33,8 @@ with that `major` version increment.
 
 The HDF5 dataset names defined by these specifications are formatted in
 fixed-font, with surrounding square brackets (e.g., ``[GEOM]``).  This
-distinguishes them from the fields in the
-:doc:`CUBE file specification </cubeformat>`, which use curly braces
+distinguishes them from the fields in the |CUBE|
+:doc:`file specification </cubeformat>`, which use curly braces
 (e.g., ``{GEOM}``).  All of the dataset names are strings, and thus
 to access the ``[GEOM]`` dataset in Python, use code like the following::
 
@@ -47,7 +46,8 @@ to access the ``[GEOM]`` dataset in Python, use code like the following::
 .. todo:: Description of the syntax/formatting of the dataset descriptions
           residing in the subpages here. In particular, a brief overview of
           the HDF5 datatypes and the 'lumped' approach taken in the
-          spec layouts. (Fig. 6-4, Tbl. 6-1)
+          spec layouts. (Fig. 6-4, Tbl. 6-1). Python tuple syntax for
+          dataset dimensions.
 
 
 Specification Versions

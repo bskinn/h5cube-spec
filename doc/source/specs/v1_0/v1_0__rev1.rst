@@ -18,17 +18,19 @@ Field Descriptions
 
 **[VERSION]**
 
-    :math:`\small \textsf{Integer Array } \mathsf{(2)}`
+    :math:`\dsetarr{Integer}{2,\!}`
 
-    `h5cube` specification version met by the file. For specification
-    v1.0 **only** this dataset MAY be absent.
+    |h5cube| specification version met by the file. This dataset MAY
+    be absent for specification v1.0 **only** .
 
 
 .. _spec_1_0_rev1-COMMENT1:
 
 **[COMMENT1]**
 
-    First comment line of the CUBE file. Corresponds to
+    :math:`\dsettype{String}`
+
+    First comment line of the |CUBE| file. Corresponds to
     |COMMENT1|.
 
 
@@ -36,7 +38,9 @@ Field Descriptions
 
 **[COMMENT2]**
 
-    Second comment linen of the CUBE file. Corresponds to
+    :math:`\dsettype{String}`
+
+    Second comment linen of the |CUBE| file. Corresponds to
     |COMMENT2|.
 
 

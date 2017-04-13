@@ -6,28 +6,28 @@ Gaussian CUBE File Format
 Disclaimer
 ----------
 
-The CUBE file format as described here is **NOT** an official specification, sanctioned
+The |CUBE| file format as described here is **NOT** an official specification, sanctioned
 by Gaussian, Inc. It is instead a best effort to define
-the contents of a representative subset of CUBE files in circulation.
+the contents of a representative subset of |CUBE| files in circulation.
 **FILES FORMATTED TO THIS SPECIFICATION
-MAY NOT BE COMPATIBLE WITH ALL SOFTWARE SUPPORTING CUBE FILE INPUT.**
+MAY NOT BE COMPATIBLE WITH ALL SOFTWARE SUPPORTING |CUBE| FILE INPUT.**
 
 Overview
 --------
 
-The CUBE file format is described on the Gaussian webpage as part of the
+The |CUBE| file format is described on the Gaussian webpage as part of the
 documentation of the ``cubegen`` utility [Gau16]_. As noted there, **all data**
-in CUBE files MUST be stored in atomic units (electrons and Bohrs, and units derived
+in |CUBE| files MUST be stored in atomic units (electrons and Bohrs, and units derived
 from these).
 
 The format specification on the webpage of the VMD visualization program [UIUC16]_
-provides a cleaner layout of one possible arrangement of CUBE file contents. In particular,
-the Gaussian specification is ambiguous about whitespace requirements, so parsing of CUBE
+provides a cleaner layout of one possible arrangement of |CUBE| file contents. In particular,
+the Gaussian specification is ambiguous about whitespace requirements, so parsing of |CUBE|
 files SHOULD accommodate some variation in the format, including (i) variable
 amounts/types of whitespace between the values on
 a given line, and (ii) the presence of leading and/or trailing whitespace on a given line.
 
-The CUBE file format as laid out below uses tagged fields (``{FIELD (type)}``) to indicate
+The |CUBE| file format as laid out below uses tagged fields (``{FIELD (type)}``) to indicate
 the types of the various data elements and where they are located in the file.
 Descriptions of the fields are provided below the
 :ref:`field layout <cubeformat-FieldLayout>`.  Lowercase algebraic symbols
@@ -101,14 +101,14 @@ Field Descriptions
 **{NATOMS (int)}**
 
     This first field on the third line indicates the number of atoms present in the system.
-    A negative value here indicates the CUBE file MUST contain the ``{DSET_IDS}`` line(s); a
+    A negative value here indicates the |CUBE| file MUST contain the ``{DSET_IDS}`` line(s); a
     positive value indicates the file MUST NOT contain this/these lines.
 
     The absolute value of ``{NATOMS}`` defines the number of rows of molecular geometry data
     that MUST be present in ``{GEOM}``.
 
-    The CUBE specification is silent as to whether a zero value is permitted for ``{NATOMS}``;
-    most applications likely **do not** support CUBE files with no atoms.
+    The |CUBE| specification is silent as to whether a zero value is permitted for ``{NATOMS}``;
+    most applications likely **do not** support |CUBE| files with no atoms.
 
 .. _cubeformat-ORIGIN:
 
@@ -136,10 +136,10 @@ Field Descriptions
 
     The first field on this line is an integer indicating the number of voxels
     :math:`N_X` present
-    along the :math:`X`-axis of the volumetric region represented by the CUBE file. This
+    along the :math:`X`-axis of the volumetric region represented by the |CUBE| file. This
     value SHOULD always be positive; whereas the *input* to the ``cubegen`` [Gau16]_
     utility allows a negative value here as a flag for the units of the axis dimensions,
-    in a CUBE file distance units MUST **always** be in Bohrs, and thus the 'units flag'
+    in a |CUBE| file distance units MUST **always** be in Bohrs, and thus the 'units flag'
     function of a negative sign is superfluous. It is prudent to design applications to
     handle gracefully a negative value here, however.
 
@@ -188,7 +188,7 @@ Field Descriptions
     ``{NATOMS}``
 
     Each row of this field provides atom identity and position information for an
-    atom in the molecular system of the CUBE file:
+    atom in the molecular system of the |CUBE| file:
 
      * ``(int)`` - Atomic number of atom :math:`a`
 
@@ -207,7 +207,7 @@ Field Descriptions
     This field comprises one or more rows of integers, representing identifiers
     associated with multiple ``{DATA}`` values at each voxel, with a total of
     :math:`m+1` values present. The most common meaning of these identifiers
-    is orbital indices, in CUBE files containing wavefunction data.
+    is orbital indices, in |CUBE| files containing wavefunction data.
     The first value MUST be positive and equal to :math:`m`, to indicate the
     length of the rest of the list. Each of these :math:`m` values may be
     any integer, with the constraint that all values SHOULD be unique.
@@ -218,7 +218,7 @@ Field Descriptions
 
 **{DATA (#x scinot)}**
 
-    This field encompasses the remainder of the CUBE file.  Typical formatted CUBE output
+    This field encompasses the remainder of the |CUBE| file.  Typical formatted |CUBE| output
     has up to six values on each line, in whitespace-separated scientific notation.
 
     If ``{NATOMS}`` is positive, a total of :math:`N_X N_Y N_Z*` ``{NVAL}`` values should
