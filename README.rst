@@ -7,7 +7,7 @@ Format specification for HDF5 files containing Gaussian CUBE volumetric
 data.
 
 Work-in-progress for all content is committed on ``draft``, with final
-versions pushed to ``master`` when complete.
+versions merged to ``master`` when complete.
 
 The specification versioning follows a modified version of
 `Semantic Versioning <http://semver.org>`__ (``major.minor rev#``):
@@ -29,4 +29,8 @@ All versions are hosted on
 
 Suggestions for changes are welcomed on the
 `Issues page <https://github.com/bskinn/h5cube-spec/issues>`__.
+
+Please see also the companion project
+`h5cube <https://github.com/bskinn/h5cube>`__, a Python package implementing
+h5cube (de)compression based on this specification.
 

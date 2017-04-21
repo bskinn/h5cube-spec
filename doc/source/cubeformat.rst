@@ -159,7 +159,7 @@ Field Descriptions
 
 **{YAXIS (int) (3x float)}**
 
-    This line defines the :math:`Y`-axis of the volumetric region of the CUBE file,
+    This line defines the :math:`Y`-axis of the volumetric region of the |CUBE| file,
     in nearly identical fashion as for ``{XAXIS}``.  The key differences are: (1) the
     first integer field :math:`N_Y` MUST always be positive; and (2) in the situation
     where the voxel axes
@@ -172,7 +172,7 @@ Field Descriptions
 
 **{ZAXIS (int) (3x float)}**
 
-    This line defines the :math:`Z`-axis of the volumetric region of the CUBE file,
+    This line defines the :math:`Z`-axis of the volumetric region of the |CUBE| file,
     in nearly identical fashion as for ``{YAXIS}``.  The key difference is that in
     the situation where the voxel axes are aligned with the geometry axes,
     the third ``float`` field
