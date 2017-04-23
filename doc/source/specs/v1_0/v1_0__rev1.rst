@@ -5,16 +5,16 @@ h5cube Specification v1.0 rev1
 
 .. todo:: General intro
 
-Field Contents
---------------
+Table of Contents
+-----------------
 
 ... TOC ...
 
 
-Field Descriptions
-------------------
+Dataset Descriptions
+--------------------
 
-.. _spec_1_0_rev1-VERSION:
+.. _spec_1_0__rev1-VERSION:
 
 **[VERSION]**
 
@@ -29,7 +29,7 @@ Field Descriptions
     This dataset MAY be absent for specification v1.0 **only**\ .
 
 
-.. _spec_1_0_rev1-COMMENT1:
+.. _spec_1_0__rev1-COMMENT1:
 
 **[COMMENT1]**
 
@@ -39,7 +39,7 @@ Field Descriptions
     |COMMENT1|.
 
 
-.. _spec_1_0_rev1-COMMENT2:
+.. _spec_1_0__rev1-COMMENT2:
 
 **[COMMENT2]**
 
@@ -48,18 +48,44 @@ Field Descriptions
     Second comment linen of the |CUBE| file. Corresponds to
     |COMMENT2|.
 
-.. _spec_1_0_rev1-NATOMS:
+
+.. _spec_1_0__rev1-NATOMS:
 
 **[NATOMS]**
 
     :math:`\dsettype{Integer}`
 
-    Corresponds directly to |NATOMS|, where the absolute value indicates the
-    number of atoms in the system. The value here may be negative, with
-    the same semantic implications as with |NATOMS|. See **!!ADDLINKS!!**
-    for more details.
+    Corresponds directly to |NATOMS|, where the absolute value equals
+    :math:`N_A`, the number of atoms in the system. The value here may
+    be negative, with the same semantic implications as in the case of
+    |NATOMS|. See **!!ADDLINKS!!** for more details.
 
     .. todo:: Add links to [NUM_DSETS] and [DSET_IDS] once written.
 
+
+.. _spec_1_0__rev1-ORIGIN:
+
+**[ORIGIN]**
+
+    :math:`\dsetarr{Float}{3,\!}`
+
+    Vector pointing from the origin of the system geometry frame to the
+    reference point :math:`\left(x_0, y_0, z_0\right)` of the vectors
+    spanning the |CUBE| voxel grid. Corresponds directly to |ORIGIN|.
+
+
+.. _spec_1_0__rev1-XAXIS:
+
+**[XAXIS]**
+
+    :math:`\dsetarr{Float}{4,\!}`
+
+    Corresponds directly to |XAXIS|. The first element is the number of
+    voxels along the :math:`X`-axis of the volumetric grid,
+    :math:`N_X`, and MUST be an integer, despite the
+    :math:`\dsettype{Float}` type of the dataset. The remaining three
+    elements are the vector :math:`\vec X` defining
+    the voxel :math:`X`-axis. See |XAXIS| for more information about
+    the semantics of these values.
 
 

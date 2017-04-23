@@ -68,8 +68,8 @@ Field Layout
           .
           .
 
-Field Contents
---------------
+Table of Contents
+-----------------
 
     :ref:`{COMMENT1} and {COMMENT2} <cubeformat-COMMENTS>` |br|
     :ref:`{NATOMS} <cubeformat-NATOMS>` |br|
@@ -96,19 +96,24 @@ Field Descriptions
     these fields SHOULD NOT be zero-length.  As well, while there is no defined maximum length
     for either of these fields, both SHOULD NOT exceed 80 characters in length.
 
+
 .. _cubeformat-NATOMS:
 
 **{NATOMS (int)}**
 
-    This first field on the third line indicates the number of atoms present in the system.
-    A negative value here indicates the |CUBE| file MUST contain the ``{DSET_IDS}`` line(s); a
-    positive value indicates the file MUST NOT contain this/these lines.
+    The absolute value of this first field on the third line indicates
+    the number of atoms :math:`N_A` present in the system.
+    A negative value indicates the |CUBE| file MUST contain the
+    ``{DSET_IDS}`` line(s); a positive value indicates the file
+    MUST NOT contain this/these lines.
 
-    The absolute value of ``{NATOMS}`` defines the number of rows of molecular geometry data
-    that MUST be present in ``{GEOM}``.
+    The value of :math:`N_A` also specifies the number of rows of
+    molecular geometry data that MUST be present in ``{GEOM}``.
 
-    The |CUBE| specification is silent as to whether a zero value is permitted for ``{NATOMS}``;
+    The |CUBE| specification is silent as to whether a zero value is
+    permitted for ``{NATOMS}``;
     most applications likely **do not** support |CUBE| files with no atoms.
+
 
 .. _cubeformat-ORIGIN:
 
@@ -119,16 +124,19 @@ Field Descriptions
     :math:`\left(x_0, y_0, z_0\right)` for the
     spanning vectors defined in ``{XAXIS}``, ``{YAXIS}``, and ``{ZAXIS}``.
 
+
 .. _cubeformat-NVAL:
 
 **{NVAL (int)}**
 
-    If ``{NATOMS}`` is positive, this field indicates how many data values are recorded
-    at each point in the voxel grid; it MAY be omitted, in which case a value of one
-    is assumed.
+    If ``{NATOMS}`` is positive, this field indicates the number of data
+    values :math:`N_V` that are recorded
+    at each point in the voxel grid; it MAY be omitted, in which case
+    a value of one is assumed.
 
-    If ``{NATOMS}`` is negative, this field MUST be either absent or have a value of
-    one.
+    If ``{NATOMS}`` is negative, this field MUST be either absent or have
+    a value of one.
+
 
 .. _cubeformat-XAXIS:
 
@@ -155,6 +163,7 @@ Field Descriptions
     ``float`` value :math:`\left(X_x\right)` will be positive and the other two
     :math:`\left(X_y\right.` and :math:`\left.X_z\right)` will be identically zero.
 
+
 .. _cubeformat-YAXIS:
 
 **{YAXIS (int) (3x float)}**
@@ -168,6 +177,7 @@ Field Descriptions
     fields :math:`\left(Y_x\right.` and :math:`\left.Y_z\right)` will be
     identically zero.
 
+
 .. _cubeformat-ZAXIS:
 
 **{ZAXIS (int) (3x float)}**
@@ -180,12 +190,12 @@ Field Descriptions
     fields :math:`\left(Z_x\right.` and :math:`\left.Z_y\right)` will be
     identically zero.
 
+
 .. _cubeformat-GEOM:
 
 **{GEOM (int) (float) (3x float)}**
 
-    *This field MUST have multiple rows, equal to the absolute value of*
-    ``{NATOMS}``
+    *This field MUST have* :math:`N_A` *rows of the below composition.*
 
     Each row of this field provides atom identity and position information for an
     atom in the molecular system of the |CUBE| file:
@@ -197,6 +207,7 @@ Field Descriptions
 
      * ``(3x float)`` - Position of the atom in the geometric frame of
        reference :math:`\left(x_a, y_a, z_a\right)`
+
 
 .. _cubeformat-DSET_IDS:
 
@@ -214,6 +225,7 @@ Field Descriptions
     Further, all :math:`m` values SHOULD be non-negative, as unpredictable
     behavior may result in some applications if negative integers are provided.
 
+
 .. _cubeformat-DATA:
 
 **{DATA (#x scinot)}**
@@ -221,17 +233,17 @@ Field Descriptions
     This field encompasses the remainder of the |CUBE| file.  Typical formatted |CUBE| output
     has up to six values on each line, in whitespace-separated scientific notation.
 
-    If ``{NATOMS}`` is positive, a total of :math:`N_X N_Y N_Z*` ``{NVAL}`` values should
+    If ``{NATOMS}`` is positive, a total of :math:`N_X N_Y N_Z N_V` values should
     be present, flattened as follows (in the below Python pseudocode the for-loop
     variables are iterated starting from zero)::
 
         for i in range(NX):
             for j in range(NY):
                 for k in range(NZ):
-                    for l in range({NVAL}):
+                    for l in range(NV):
 
                         write(data_array[i, j, k, l])
-                        if (k*{NVAL} + l) mod 6 == 5:
+                        if (k*NV + l) mod 6 == 5:
                             write('\n')
 
                 write('\n')
