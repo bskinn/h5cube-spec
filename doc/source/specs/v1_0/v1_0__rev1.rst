@@ -89,3 +89,65 @@ Dataset Descriptions
     the semantics of these values.
 
 
+.. _spec_1_0__rev1-YAXIS:
+
+**[YAXIS]**
+
+    :math:`\dsetarr{Float}{4,\!}`
+
+    .. todo:: Complete this!
+
+
+.. _spec_1_0__rev1-ZAXIS:
+
+**[ZAXIS]**
+
+    :math:`\dsetarr{Float}{4,\!}`
+
+    .. todo:: Complete this!
+
+
+.. _spec_1_0__rev1-GEOM:
+
+**[GEOM]**
+
+    :math:`\dsetarr{Float}{FIX THIS!!}`
+
+    .. todo:: Complete this!
+
+
+.. _spec_1_0__rev1-NUM_DSETS:
+
+**[NUM_DSETS]**
+
+    :math:`\dsettype{Integer}`
+
+    .. todo:: Complete this!
+
+
+.. _spec_1_0__rev1-DSET_IDS:
+
+**[DSET_IDS]**
+
+    :math:`\dsetarr{Integer}{FIX THIS!!}`
+
+    .. todo:: Complete this!
+
+
+.. _spec_1_0__rev1-SIGNS:
+
+**[SIGNS]**
+
+    :math:`\dsetarr{Integer}{FIX THIS!!}`
+
+    .. todo:: Complete this!
+
+
+.. _spec_1_0__rev1-LOGDATA:
+
+**[LOGDATA]**
+
+    :math:`\dsetarr{Float}{FIX THIS!!}`
+
+    .. todo:: Complete this!
+
