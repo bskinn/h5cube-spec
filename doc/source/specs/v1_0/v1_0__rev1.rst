@@ -82,10 +82,11 @@ Dataset Descriptions
 
     Corresponds directly to |XAXIS|. The first element is the number of
     voxels along the :math:`X`-axis of the volumetric grid,
-    :math:`N_X`, and MUST be an integer, despite the
+    :math:`N_X`, and MUST be a positive integer value, despite the
     :math:`\dsettype{Float}` type of the dataset. The remaining three
     elements are the vector :math:`\vec X` defining
-    the voxel :math:`X`-axis. See |XAXIS| for more information about
+    the voxel :math:`X`-axis, and SHOULD all be non-negative.
+    See |XAXIS| for more information about
     the semantics of these values.
 
 
@@ -95,7 +96,13 @@ Dataset Descriptions
 
     :math:`\dsetarr{Float}{4,\!}`
 
-    .. todo:: Complete this!
+    Corresponds directly to |YAXIS|. The first element is the number of
+    voxels along the :math:`Y`-axis of the volumetric grid,
+    :math:`N_Y`, and MUST be a positive integer value, despite the
+    :math:`\dsettype{Float}` type of the dataset. The remaining three
+    elements are the vector :math:`\vec Y` defining the voxel
+    :math:`Y`-axis, and SHOULD all be non-negative.
+    See |YAXIS| for more information about the semantics of these values.
 
 
 .. _spec_1_0__rev1-ZAXIS:
@@ -104,14 +111,24 @@ Dataset Descriptions
 
     :math:`\dsetarr{Float}{4,\!}`
 
-    .. todo:: Complete this!
+    Corresponds directly to |ZAXIS|. The first element is the number of
+    voxels along the :math:`Z`-axis of the volumetric grid,
+    :math:`N_Z`, and MUST be a positive integer value, despite the
+    :math:`\dsettype{Float}` type of the dataset. The remaining three
+    elements are the vector :math:`\vec Z` defining the voxel
+    :math:`Z`-axis, and SHOULD all be non-negative.
+    See |ZAXIS| for more information about the semantics of these values.
 
 
 .. _spec_1_0__rev1-GEOM:
 
 **[GEOM]**
 
-    :math:`\dsetarr{Float}{FIX THIS!!}`
+    :math:`\dsetarr{Float}{N_A,5}`
+
+    Corresponds directly to |GEOM|. The first element of each of the
+    :math:`N_A` lines (see
+    :ref:`[NATOMS] <spec_1_0__rev1-NATOMS>`)
 
     .. todo:: Complete this!
 
