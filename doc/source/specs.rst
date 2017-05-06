@@ -8,7 +8,7 @@ for convenient access.  The versioning scheme used here follows the
 spirit of
 `Semantic Versioning <http://semver.org>`__ but in a revised syntax:
 
- * Specification version numbers will be of the form :math:`\mtt{vx.y rev#}`,
+ * Specification version numbers are of the form :math:`\mtt{vx.y rev#}`,
    where :math:`\mtt x` and :math:`\mtt{y}` indicate
    `major` and `minor` categories of changes, and :math:`\mtt{#}` is a `revision number`.
 
@@ -47,7 +47,9 @@ to access the ``[GEOM]`` dataset in Python, use code like the following::
           residing in the subpages here. In particular, a brief overview of
           the HDF5 datatypes and the 'lumped' approach taken in the
           spec layouts. (Fig. 6-4, Tbl. 6-1). Python tuple syntax for
-          dataset dimensions.
+          dataset dimensions. The data type provided on the first line under
+          a given dataset name is the data type it must be present as in
+          an |h5cube| file.
 
 
 Specification Versions

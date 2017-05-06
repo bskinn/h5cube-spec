@@ -34,16 +34,16 @@ Descriptions of the fields are provided below the
 :math:`\left(x\right.`, :math:`y`, :math:`\left. z\right)` indicate coordinates in the frame
 of the molecular geometry, whereas uppercase algebraic symbols
 :math:`\left(X\right.`, :math:`Y`, :math:`\left. Z\right)` indicate coordinates in the
-voxel grid defined by ``{XAXIS}``, ``{YAXIS}``, and ``{ZAXIS}``.
+voxel grid defined by |XAXIS|, |YAXIS|, and |ZAXIS|.
 
 All fields except for
-``{DSET_IDS}``  and ``{NVAL}`` MUST be present in all files.
+|DSET_IDS|  and |NVAL| MUST be present in all files.
 
-``{DSET_IDS}`` MUST be present if
-``{NATOMS}`` is negative; it MUST NOT be present if ``{NATOMS}`` is positive.
+|DSET_IDS| MUST be present if
+|NATOMS| is negative; it MUST NOT be present if |NATOMS| is positive.
 
-``{NVAL}`` MAY be omitted if its value would be equal to one; it MUST be absent or
-have a value of one if ``{NATOMS}`` is negative.
+|NVAL| MAY be omitted if its value would be equal to one; it MUST be absent or
+have a value of one if |NATOMS| is negative.
 
 .. _cubeformat-FieldLayout:
 
@@ -71,16 +71,16 @@ Field Layout
 Table of Contents
 -----------------
 
-    :ref:`{COMMENT1} and {COMMENT2} <cubeformat-COMMENTS>` |br|
-    :ref:`{NATOMS} <cubeformat-NATOMS>` |br|
-    :ref:`{ORIGIN} <cubeformat-ORIGIN>` |br|
-    :ref:`{NVAL} <cubeformat-NVAL>` |br|
-    :ref:`{XAXIS} <cubeformat-XAXIS>` |br|
-    :ref:`{YAXIS} <cubeformat-YAXIS>` |br|
-    :ref:`{ZAXIS} <cubeformat-ZAXIS>` |br|
-    :ref:`{GEOM} <cubeformat-GEOM>` |br|
-    :ref:`{DSET_IDS} <cubeformat-DSET_IDS>` |br|
-    :ref:`{DATA} <cubeformat-DATA>`
+    |COMMENT1| and |COMMENT2| |br|
+    |NATOMS| |br|
+    |ORIGIN| |br|
+    |NVAL|  |br|
+    |XAXIS| |br|
+    |YAXIS| |br|
+    |ZAXIS| |br|
+    |GEOM|  |br|
+    |DSET_IDS| |br|
+    |DATA|
 
 
 Field Descriptions
@@ -90,8 +90,8 @@ Field Descriptions
 
 **{COMMENT1 (str)}** and **{COMMENT2 (str)}**
 
-    Two lines of text at the head of the file. Per VMD [UIUC16]_, by convention ``{COMMENT1}``
-    is typically the title of the system and ``{COMMENT2}`` is a description of the
+    Two lines of text at the head of the file. Per VMD [UIUC16]_, by convention |COMMENT1|
+    is typically the title of the system and |COMMENT2| is a description of the
     property/content stored in the file, but they MAY be anything. For robustness, both of
     these fields SHOULD NOT be zero-length.  As well, while there is no defined maximum length
     for either of these fields, both SHOULD NOT exceed 80 characters in length.
@@ -104,15 +104,17 @@ Field Descriptions
     The absolute value of this first field on the third line indicates
     the number of atoms :math:`N_A` present in the system.
     A negative value indicates the |CUBE| file MUST contain the
-    ``{DSET_IDS}`` line(s); a positive value indicates the file
+    |DSET_IDS| line(s); a positive value indicates the file
     MUST NOT contain this/these lines.
 
     The value of :math:`N_A` also specifies the number of rows of
-    molecular geometry data that MUST be present in ``{GEOM}``.
+    molecular geometry data that MUST be present in |GEOM|.
 
     The |CUBE| specification is silent as to whether a zero value is
-    permitted for ``{NATOMS}``;
-    most applications likely **do not** support |CUBE| files with no atoms.
+    permitted for |NATOMS|; regardless, it is probable that
+    many applications **do not** support |CUBE| files with no atoms.
+    Accordingly, this specification hereby declares that |NATOMS| MUST be
+    nonzero.
 
 
 .. _cubeformat-ORIGIN:
@@ -122,19 +124,19 @@ Field Descriptions
     This set of three fields defines the displacement vector from the geometric origin of
     the system :math:`\left(0,0,0\right)` to the reference point
     :math:`\left(x_0, y_0, z_0\right)` for the
-    spanning vectors defined in ``{XAXIS}``, ``{YAXIS}``, and ``{ZAXIS}``.
+    spanning vectors defined in |XAXIS|, |YAXIS|, and |ZAXIS|.
 
 
 .. _cubeformat-NVAL:
 
 **{NVAL (int)}**
 
-    If ``{NATOMS}`` is positive, this field indicates the number of data
+    If |NATOMS| is positive, this field indicates the number of data
     values :math:`N_V` that are recorded
     at each point in the voxel grid; it MAY be omitted, in which case
     a value of one is assumed.
 
-    If ``{NATOMS}`` is negative, this field MUST be either absent or have
+    If |NATOMS| is negative, this field MUST be either absent or have
     a value of one.
 
 
@@ -169,7 +171,7 @@ Field Descriptions
 **{YAXIS (int) (3x float)}**
 
     This line defines the :math:`Y`-axis of the volumetric region of the |CUBE| file,
-    in nearly identical fashion as for ``{XAXIS}``.  The key differences are: (1) the
+    in nearly identical fashion as for |XAXIS|.  The key differences are: (1) the
     first integer field :math:`N_Y` MUST always be positive; and (2) in the situation
     where the voxel axes
     aligned with the geometry axes, the second ``float`` field
@@ -183,7 +185,7 @@ Field Descriptions
 **{ZAXIS (int) (3x float)}**
 
     This line defines the :math:`Z`-axis of the volumetric region of the |CUBE| file,
-    in nearly identical fashion as for ``{YAXIS}``.  The key difference is that in
+    in nearly identical fashion as for |YAXIS|.  The key difference is that in
     the situation where the voxel axes are aligned with the geometry axes,
     the third ``float`` field
     :math:`\left(Z_z\right)` will be positive and the first and second ``float``
@@ -213,10 +215,10 @@ Field Descriptions
 
 **{DSET_IDS (#x int)}**
 
-    *This field is only present if* ``{NATOMS}`` *is negative*
+    *This field is only present if* |NATOMS| *is negative*
 
     This field comprises one or more rows of integers, representing identifiers
-    associated with multiple ``{DATA}`` values at each voxel, with a total of
+    associated with multiple |DATA| values at each voxel, with a total of
     :math:`m+1` values present. The most common meaning of these identifiers
     is orbital indices, in |CUBE| files containing wavefunction data.
     The first value MUST be positive and equal to :math:`m`, to indicate the
@@ -233,7 +235,7 @@ Field Descriptions
     This field encompasses the remainder of the |CUBE| file.  Typical formatted |CUBE| output
     has up to six values on each line, in whitespace-separated scientific notation.
 
-    If ``{NATOMS}`` is positive, a total of :math:`N_X N_Y N_Z N_V` values should
+    If |NATOMS| is positive, a total of :math:`N_X N_Y N_Z N_V` values should
     be present, flattened as follows (in the below Python pseudocode the for-loop
     variables are iterated starting from zero)::
 
@@ -248,8 +250,8 @@ Field Descriptions
 
                 write('\n')
 
-    If ``{NATOMS}`` is negative and :math:`m` datasets are present (see
-    :ref:`{DSET_IDS} <cubeformat-DSET_IDS>` above), a total of
+    If |NATOMS| is negative and :math:`m` datasets are present (see
+    |DSET_IDS| above), a total of
     :math:`N_X N_Y N_Z m` values should be present, flattened as follows::
 
         for i in range(NX):
@@ -265,10 +267,11 @@ Field Descriptions
 
     The sequence of the data values along the last (``l``) dimension of the data array
     for each ``i, j, k`` MUST match
-    the sequence of the identifiers provided in ``{DSET_IDS}`` in order for the dataset
+    the sequence of the identifiers provided in |DSET_IDS| in order for the dataset
     to be interpreted properly.
 
-    Regardless of the sign of ``{NATOMS}``, as illustrated above a newline is typically
+    Regardless of the sign of |NATOMS|, as illustrated above a newline is typically
     inserted after the block of data corresponding to each :math:`\left(X_i, Y_j\right)`
     pair.
+
 
