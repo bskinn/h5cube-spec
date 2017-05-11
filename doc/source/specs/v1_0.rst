@@ -7,6 +7,8 @@ Only scalar volumetric data... *and other commentary*
 
 .. todo:: Complete this description.
 
+Test substitution of autogen spec dataset reference: |_1_0__rev1-GEOM|
+
 .. toctree::
     :maxdepth: 1
 

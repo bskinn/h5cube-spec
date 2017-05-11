@@ -234,6 +234,7 @@ Field Descriptions
 
     This field encompasses the remainder of the |CUBE| file.  Typical formatted |CUBE| output
     has up to six values on each line, in whitespace-separated scientific notation.
+    Non-numeric data values are **not** supported and MUST NOT be present.
 
     If |NATOMS| is positive, a total of :math:`N_X N_Y N_Z N_V` values should
     be present, flattened as follows (in the below Python pseudocode the for-loop

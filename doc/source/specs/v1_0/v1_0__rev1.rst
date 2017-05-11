@@ -10,7 +10,17 @@ Table of Contents
 
     |_VERSION| |br|
     |_COMMENT1| |br|
-    ...
+    |_COMMENT2| |br|
+    |_NATOMS| |br|
+    |_ORIGIN| |br|
+    |_XAXIS| |br|
+    |_YAXIS| |br|
+    |_ZAXIS| |br|
+    |_GEOM| |br|
+    |_NUM_DSETS| |br|
+    |_DSET_IDS| |br|
+    |_SIGNS| |br|
+    |_LOGDATA| |br|
 
 
 Dataset Descriptions
@@ -174,14 +184,22 @@ Dataset Descriptions
     |_NATOMS| :math:`>0 \rightarrow \dsetarr{Integer}{N_X,N_Y,N_Z}` |br|
     |_NATOMS| :math:`<0 \rightarrow \dsetarr{Integer}{N_X,N_Y,N_Z,m}`
 
-    .. todo:: Complete this!
+    This dataset combines with |_LOGDATA| to define the value of the
+    volumetric data at each voxel :math:`(X,Y,Z)`.  This dataset contains
+    the arithmetic signs of the data values, as per the standard
+    mathematical *signum* :math:`(\sgn)` function [Wik_Sign]_:
+
+        :math:`\sgn{\,x} := \textit{COMPLETE THIS}`
+
+    .. todo:: Complete this
 
 
 .. _spec_1_0__rev1-LOGDATA:
 
 **[LOGDATA]**
 
-    :math:`\dsetarr{Float}{FIX THIS!!}`
+    |_NATOMS| :math:`>0 \rightarrow \dsetarr{Float}{N_X,N_Y,N_Z}` |br|
+    |_NATOMS| :math:`<0 \rightarrow \dsetarr{Float}{N_X,N_Y,N_Z,m}`
 
     .. todo:: Complete this!
 

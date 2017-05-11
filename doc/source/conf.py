@@ -39,7 +39,7 @@ extensions = [
 ]
 
 # MathJax CDN going down; switch to cdnjs @ fixed version
-mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -536,11 +536,22 @@ intersphinx_mapping = {
 p_ver = re.compile('(\\d+)_(\\d+)__rev(\\d+)')
 
 # Do search, and replace construction/insertion
-for dirname in os.listdir('specs'):
+#  Have to walk up the directory tree first, to find the source root,
+#  in the case that this is exec-ed by objpull.py or if
+#  make is invoked on Linux from a directory other than the
+#  source root.
+curdir = os.getcwd()
+while 'conf.py' not in os.listdir():
+    os.chdir(os.path.pardir)
+docroot = os.getcwd()
+specroot = os.path.join(docroot, 'specs')
+os.chdir(curdir)
+
+for dirname in os.listdir(specroot):
     # Just finding working directories at this point
-    if osp.isdir(osp.join('specs', dirname)):
+    if osp.isdir(osp.join(specroot, dirname)):
         # Parse all files starting with the folder name and rev
-        for fname in [_ for _ in os.listdir(osp.join('specs', dirname))
+        for fname in [_ for _ in os.listdir(osp.join(specroot, dirname))
                       if _.startswith(dirname + '__rev') and
                       _.endswith('.rst')]:
             # Navigation anchor string
@@ -554,7 +565,7 @@ for dirname in os.listdir('specs'):
             ver = p_ver.match(anch_str).group(1, 2, 3)
 
             # Search for the navigation anchors in each found file
-            with open(osp.join('specs', dirname, fname)) as infile:
+            with open(osp.join(specroot, dirname, fname)) as infile:
                 for line in infile.readlines():
                     if line.find('.. _spec_' + anch_str) > -1:
                         # Found; parse for the anchor and add to rst_epilog
@@ -562,7 +573,7 @@ for dirname in os.listdir('specs'):
                         rst_epilog += (".. |_{0}-{1}| replace:: :ref:`[{1}] "
                                        "<spec_{0}-{1}>`\\ "
                                        ":math:`\\small _\\textit{{"
-                                       "v{2}.{3}rev{4}"
+                                       "v{2}.{3}r{4}"
                                        "}}`\n\n"
                                        ).format(anch_str, m_anch.group(1), *ver)
 
