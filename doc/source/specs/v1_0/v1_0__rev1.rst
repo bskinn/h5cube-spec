@@ -187,11 +187,17 @@ Dataset Descriptions
     This dataset combines with |_LOGDATA| to define the value of the
     volumetric data at each voxel :math:`(X,Y,Z)`.  This dataset contains
     the arithmetic signs of the data values, as per the standard
-    mathematical *signum* :math:`(\sgn)` function [Wik_Sign]_:
+    mathematical *signum* :math:`(\sgn)` function [WP_Sign]_. Thus, if
+    |_NATOMS| :math:`>0`:
 
-        :math:`\sgn{\,x} := \textit{COMPLETE THIS}`
+        |_SIGNS|\ :math:`_{X,Y,Z} = \sgn{\left[\Phi\left(X,Y,Z\right)\right]}`
 
-    .. todo:: Complete this
+    and if |_NATOMS| :math:`<0`:
+
+        |_SIGNS|\ :math:`_{X,Y,Z,i} = \sgn{\left[\Phi_i\left(X,Y,Z\right)\right]}`
+
+    where :math:`\Phi_i` is the :math:`i^\text{th}` dataset included in the
+    |CUBE| file.
 
 
 .. _spec_1_0__rev1-LOGDATA:
