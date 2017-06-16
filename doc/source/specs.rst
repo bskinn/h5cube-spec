@@ -43,13 +43,21 @@ to access the ``[GEOM]`` dataset in Python, use code like the following::
     >>> hf['GEOM'].value
     array([ ... ])
 
-.. todo:: Description of the syntax/formatting of the dataset descriptions
-          residing in the subpages here. In particular, a brief overview of
-          the HDF5 datatypes and the 'lumped' approach taken in the
-          spec layouts. (Fig. 6-4, Tbl. 6-1). Python tuple syntax for
-          dataset dimensions. The data type provided on the first line under
-          a given dataset name is the data type it must be present as in
-          an |h5cube| file.
+.. todo:: * Description of the syntax/formatting of the dataset descriptions
+            residing in the subpages here. In particular, a brief overview of
+            the HDF5 datatypes and the 'lumped' approach taken in the
+            spec layouts. (Fig. 6-4, Tbl. 6-1).
+
+          * Python tuple syntax for
+            dataset dimensions.
+
+          * The data type provided on the first line under
+            a given dataset name is the data type it must be present as in
+            an |h5cube| file.
+
+          * The formula for generating the non-logscale data from the
+            [SIGNS] and [LOGDATA].
+
 
 
 Specification Versions
