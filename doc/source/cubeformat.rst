@@ -6,11 +6,11 @@ Gaussian CUBE File Format
 Disclaimer
 ----------
 
-The |CUBE| file format as described here is **NOT** an official specification, sanctioned
-by Gaussian, Inc. It is instead a best effort to define
+The |CUBE| file format as described here is **NOT** an official specification,
+sanctioned by Gaussian, Inc. It is instead a best effort to define
 the contents of a representative subset of |CUBE| files in circulation.
 **FILES FORMATTED TO THIS SPECIFICATION
-MAY NOT BE COMPATIBLE WITH ALL SOFTWARE SUPPORTING |CUBE| FILE INPUT.**
+MAY NOT BE COMPATIBLE WITH ALL SOFTWARE SUPPORTING** |CUBE| **FILE INPUT.**
 
 Overview
 --------
