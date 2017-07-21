@@ -180,8 +180,8 @@ Dataset Descriptions
 
 **[SIGNS]**
 
-    |_NATOMS| :math:`>0 \rightarrow \dsetarr{Integer}{N_X,N_Y,N_Z}` |br|
-    |_NATOMS| :math:`<0 \rightarrow \dsetarr{Integer}{N_X,N_Y,N_Z,m}`
+    |_NATOMS| :math:`\dsetarrmap{>0}{Integer}{N_X,N_Y,N_Z}` |br|
+    |_NATOMS| :math:`\dsetarrmap{<0}{Integer}{N_X,N_Y,N_Z,m}`
 
     This dataset combines with |_LOGDATA| to define the value of the
     volumetric data at each voxel :math:`(X,Y,Z)`.  This dataset contains
@@ -203,8 +203,8 @@ Dataset Descriptions
 
 **[LOGDATA]**
 
-    |_NATOMS| :math:`>0 \rightarrow \dsetarr{Float}{N_X,N_Y,N_Z}` |br|
-    |_NATOMS| :math:`<0 \rightarrow \dsetarr{Float}{N_X,N_Y,N_Z,m}`
+    |_NATOMS| :math:`\dsetarrmap{>0}{Float}{N_X,N_Y,N_Z}` |br|
+    |_NATOMS| :math:`\dsetarrmap{<0}{Float}{N_X,N_Y,N_Z,m}`
 
     This dataset combines with |_SIGNS| to define the value of the
     volumetric data at each voxel :math:`(X,Y,Z)`. This dataset contains
