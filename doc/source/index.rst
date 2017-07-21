@@ -52,7 +52,9 @@ NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
 `Semantic Versioning <http://semver.org>`__; see the
 :doc:`root specifications page <specs>` for more information.
 
-Contents:
+
+Contents
+--------
 
 .. toctree::
     :maxdepth: 2
@@ -64,10 +66,10 @@ Contents:
 
 
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
 

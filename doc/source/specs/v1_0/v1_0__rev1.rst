@@ -3,10 +3,9 @@
 h5cube Specification v1.0 rev1
 ==============================
 
-.. todo:: General intro
 
-Table of Contents
------------------
+Datasets
+--------
 
     |_VERSION| |br|
     |_COMMENT1| |br|
@@ -57,7 +56,7 @@ Dataset Descriptions
 
     |String_t|
 
-    Second comment linen of the |CUBE| file. Corresponds to
+    Second comment line of the |CUBE| file. Corresponds to
     |COMMENT2|.
 
 
@@ -97,7 +96,7 @@ Dataset Descriptions
     :math:`N_X`, and MUST be a positive integer value, despite the
     |Float_t| type of the dataset. The remaining three
     elements are the vector :math:`\vec X` defining
-    the voxel :math:`X`-axis, and SHOULD all be non-negative.
+    the voxel :math:`X`-axis.
     See |XAXIS| for more information about
     the semantics of these values.
 
@@ -113,7 +112,7 @@ Dataset Descriptions
     :math:`N_Y`, and MUST be a positive integer value, despite the
     |Float_t| type of the dataset. The remaining three
     elements are the vector :math:`\vec Y` defining the voxel
-    :math:`Y`-axis, and SHOULD all be non-negative.
+    :math:`Y`-axis.
     See |YAXIS| for more information about the semantics of these values.
 
 
@@ -128,7 +127,7 @@ Dataset Descriptions
     :math:`N_Z`, and MUST be a positive integer value, despite the
     |Float_t| type of the dataset. The remaining three
     elements are the vector :math:`\vec Z` defining the voxel
-    :math:`Z`-axis, and SHOULD all be non-negative.
+    :math:`Z`-axis.
     See |ZAXIS| for more information about the semantics of these values.
 
 
@@ -142,9 +141,9 @@ Dataset Descriptions
     :math:`N_A` lines (see |_NATOMS|) indicates the atomic number
     of atom *a*, and MUST be an |Integer_t| value. The second
     element of each line indicates the nuclear charge of atom *a*, and will
-    generally be (i) equal to the atomic number and (ii) an |Integer_t|
-    value.  This value *will* deviate from the
-    atomic number when an ECP is used on atom *a*.
+    generally be (i) equal to the atomic number and (ii) an integer
+    quantity.  This value *will* deviate from the
+    atomic number when an ECP [WP_PP]_ is used on atom *a*.
 
     The remaining three |Float_t| elements of each line
     provide the coordinates :math:`(x_a, y_a, z_a)` of atom *a* in the
@@ -190,11 +189,11 @@ Dataset Descriptions
     mathematical *signum* :math:`(\sgn)` function [WP_Sign]_. Thus, if
     |_NATOMS| :math:`>0`:
 
-        |_SIGNS|\ :math:`_{X,Y,Z} = \sgn{\left[\Phi\left(X,Y,Z\right)\right]}`
+        |_SIGNS|\ :math:`_{X,Y,Z} = \sgn{\left[\Phi\!\left(X,Y,Z\right)\right]}`
 
     and if |_NATOMS| :math:`<0`:
 
-        |_SIGNS|\ :math:`_{X,Y,Z,i} = \sgn{\left[\Phi_i\left(X,Y,Z\right)\right]}`
+        |_SIGNS|\ :math:`_{X,Y,Z,i} = \sgn{\left[\Phi_i\!\left(X,Y,Z\right)\right]}`
 
     where :math:`\Phi_i` is the :math:`i^\text{th}` dataset included in the
     |CUBE| file.
@@ -207,7 +206,19 @@ Dataset Descriptions
     |_NATOMS| :math:`>0 \rightarrow \dsetarr{Float}{N_X,N_Y,N_Z}` |br|
     |_NATOMS| :math:`<0 \rightarrow \dsetarr{Float}{N_X,N_Y,N_Z,m}`
 
-    .. todo:: Complete this!
+    This dataset combines with |_SIGNS| to define the value of the
+    volumetric data at each voxel :math:`(X,Y,Z)`. This dataset contains
+    the common logarithms [WP_log10]_ of the data values. Thus, if
+    |_NATOMS| :math:`>0`:
+
+        |_LOGDATA|\ :math:`_{X,Y,Z} = \log_{10}{\left[\Phi\!\left(X,Y,Z\right)\right]}`
+
+    and if |_NATOMS| :math:`<0`:
+
+        |_LOGDATA|\ :math:`_{X,Y,Z,i} = \log_{10}{\left[\Phi_i\!\left(X,Y,Z\right)\right]}`
+
+    where :math:`\Phi_i` is the :math:`i^\text{th}` dataset included in the
+    |CUBE| file.
 
 
 

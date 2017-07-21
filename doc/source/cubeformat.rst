@@ -151,13 +151,11 @@ Field Descriptions
     utility allows a negative value here as a flag for the units of the axis dimensions,
     in a |CUBE| file distance units MUST **always** be in Bohrs, and thus the 'units flag'
     function of a negative sign is superfluous. It is prudent to design applications to
-    handle gracefully a negative value here, however.
+    handle gracefully (viz., disregard the sign of) a negative value here, however.
 
     The second through fourth values on this line are the components of the vector
     :math:`\vec X`
-    defining the voxel :math:`X`-axis.  They SHOULD all be non-negative; proper
-    loading/interpretation/calculation behavior is
-    not guaranteed if negative values are supplied. As noted in the
+    defining the voxel :math:`X`-axis.  As noted in the
     Gaussian documentation [Gau16]_, the voxel axes need neither be orthogonal
     nor aligned with the geometry axes. However, many tools only support
     voxel axes that **are** aligned with the geometry axes (and thus are also orthogonal).

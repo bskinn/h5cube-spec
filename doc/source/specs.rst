@@ -31,6 +31,21 @@ Applications *may or may not* be compatible with versions
 :math:`\mtt x > \mtt X`, depending on the particular changes introduced
 with that `major` version increment.
 
+
+Specification Versions
+----------------------
+
+
+.. toctree::
+    :maxdepth: 2
+
+    v1.0 <specs/v1_0>
+
+
+Syntax and Conventions
+----------------------
+
+
 The HDF5 dataset names defined by these specifications are formatted in
 fixed-font, with surrounding square brackets (e.g., ``[GEOM]``).  This
 distinguishes them from the fields in the |CUBE|
@@ -60,14 +75,6 @@ to access the ``[GEOM]`` dataset in Python, use code like the following::
 
 
 
-Specification Versions
-----------------------
-
-
-.. toctree::
-    :maxdepth: 2
-
-    v1.0 <specs/v1_0>
 
 
 
